@@ -13,7 +13,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 knitr::opts_chunk$set(echo = TRUE)
-
+library(tidyverse)  
+library(dplyr)
+library(janitor)
 chr7 <- read_tsv("../chr7.tsv", col_types = cols(.default = "c")) %>% clean_names()
 chr16 <- read_tsv("../chr16.tsv", col_types = cols(.default = "c")) %>% clean_names()
 chr19 <- read_tsv("../chr19.tsv", col_types = cols(.default = "c")) %>% clean_names()
@@ -163,3 +165,4 @@ library(rstatix)
 combined_lengths %>%
   dunn_test(transcript_length ~ chr, p.adjust.method = "bonferroni") %>% 
 view()
+```
